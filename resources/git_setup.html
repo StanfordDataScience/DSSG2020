@@ -1,0 +1,89 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h3 id="gitlab-setup">GitLab setup</h3>
+<p>We have added all of you to GitLab:</p>
+<ol>
+<li>Open <code>code.stanford.edu</code> in your browser (login with your Stanford credentials if prompted)</li>
+<li>Make sure you have access to the <code>dssg_stanford</code> group: <ul>
+<li>Go to <code>Groups</code> &gt; <code>Your groups</code> and then click on dssg_stanford.</li>
+<li>Within this group we have two git repositories:<ul>
+<li><code>platelet_processing.git</code></li>
+<li><code>course_materials.git</code></li>
+</ul>
+</li>
+<li>Click on and check that you can see these two repositories.</li>
+</ul>
+</li>
+<li>Now, let&#39;s set up Nero to connect to GitLab. Because Stanford GitLab uses two-factor authentication, we need an access token to authenticate.</li>
+<li><p>In your browser, go to: [<a href="https://code.stanford.edu/profile/personal_access_tokens">https://code.stanford.edu/profile/personal_access_tokens</a>]</p>
+<ul>
+<li>Fill in &#39;Add a personal access token&#39;, select &#39;api&#39; for the level of access. Set the expiration date to &#39;2019-12-31&#39;. For the name, just select something to keep track of this.</li>
+<li>Press the button &#39;Create personal access token&#39;</li>
+<li>The field <code>Your New Personal Access Token</code> will appear at the top of the page. <strong>Copy</strong> this token to a secure location on your laptop - e.g. somewhere where you store your passwords. You will need this to log on. 
+<em>Do not put this in your git repo or put it in a public location!</em></li>
+<li>At any point in the future if you want to get rid of this, you can just click &#39;revoke&#39; next to the name of the token.</li>
+</ul>
+</li>
+<li><p>Now let&#39;s &#39;fork&#39; the <code>course_materials.git</code> repository. Press the fork button on the GitLab user interface, it will give you a &quot;forking&quot; message and then we wait a couple seconds. Then go to your projects, and you should see your own copy of course_materials listed. </p>
+</li>
+</ol>
+<p>Now - the repository is listed as private, so go to &quot;Settings&quot; &gt; &quot;Members&quot; and add the &#39;dssg_stanford&#39; group.</p>
+<ol>
+<li><p>You are going to copy this repository to your local directory. Let&#39;s test that the token works! Open up RStudio on Nero and switch to the terminal tab:  </p>
+<ul>
+<li>Make sure you are in your home directory or a directory within home (not <code>/share/</code>!).</li>
+<li>Type in: <code>git clone https://code.stanford.edu/&lt;sunet&gt;/course_materials.git</code>. <em>This makes a copy of your forked git repository on Nero.</em></li>
+<li>Fill in your Stanford username and the access token we just created (do not use your Stanford password!). </li>
+<li>This should create a new directory <code>course_materials</code> that contains the course material</li>
+</ul>
+</li>
+<li><p>Take a look at the contents of your forked repository in RStudio.</p>
+<ul>
+<li>Go to &#39;File&#39; &gt; &#39;Open Project&#39;, and open the <code>course_materials</code> directory </li>
+<li>This will load the project. Since it is coming from a git repository, you should have a <code>Git</code> tab on the top right. If you do not have this, grab a mentor for help!</li>
+</ul>
+</li>
+</ol>
+<h4 id="creating-a-branch">Creating a branch</h4>
+<p>We want to create a branch for today&#39;s edits. To do this, type:
+<code>git checkout -b &lt;branch_name&gt;</code>
+This creates and switches to the new branch.</p>
+<h4 id="editing-and-committing">Editing and committing</h4>
+<p>Now, let&#39;s make a tiny edit:</p>
+<ul>
+<li>Open the file &quot;week1/tidyr_intro.Rmd&quot; - this is the activity Mike will be working us through today</li>
+<li>Fill in your name at the name field</li>
+<li>Within the git tab in RStudio, check the box next to &quot;week1/tidyr_intro.Rmd&quot; (<em>this is the staging step or &quot;add&quot;</em>) and click <code>Commit</code>. This will open up a new window<ul>
+<li>Fill in a note about the commit. Click <code>Commit</code></li>
+<li><em>Note - we just followed the standard git workflow: modify, stage (&quot;add&quot; or checking that box), and commit.</em>
+You have now committed changes locally. Yay!</li>
+</ul>
+</li>
+</ul>
+<h4 id="pushing-to-gitlab">Pushing to GitLab</h4>
+<p>Let&#39;s push this to a remote</p>
+<ul>
+<li><p>Go to the terminal within RStudio and type in: <code>git remote -v</code>
+The result should say &#39;origin&#39; and list the site you cloned from &quot;<a href="https://code.stanford.edu/">https://code.stanford.edu/</a><sunet>/course_materials.git&quot;.</p>
+</li>
+<li><p>Once this is set, switch to the terminal within RStudio and type in <code>git push origin &lt;branch_name&gt;</code>. <em>This will push the code from your local repository&#39;s &#39;<branch_name>&#39; branch (what you just edited) to that branch of the &#39;origin&#39; (your forked repository) on Stanford GitLab.</em></p>
+<ul>
+<li>The first time you do this, you will have to set your global git config
+These commands are:<ul>
+<li><code>git config --global user.name &lt;your_name&gt;</code></li>
+<li><code>git config --global user.email &lt;your_email&gt;</code></li>
+</ul>
+</li>
+<li>You will need to use the access token again every time you push.<ul>
+<li>Open up GitLab in your browser, and switch to this repository. </li>
+<li><strong>Switching branches on gitlab</strong>: On the drop-down menu, where it says &quot;master&quot;, press the drop down. Your branch name should appear, click on this.</li>
+<li>Check that your name appears!</li>
+<li>Yay! now you&#39;ve pushed a change to GitLab. </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Remember - do not commit data!</strong> (the data stays on Nero! in &#39;/share/pi/dssg&#39;)</p>
+</body></html>
