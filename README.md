@@ -6,7 +6,10 @@ Below you will find the mateiral for technical training.
 1. [Github setup](resources/git_setup.md)
 
 ### Data Inquiry Session
-* Intro to data inquiry and documenting with Rmd
+- Week 1: Intro to data inquiry and documenting with Rmd
+  - [PreWork](resources/Prework.html)
+  - COVIDemergency
+- Week 2: Documenting for oral presentations 
 
 ### Helpful Information
 1. [Data Science Resource List](resources/ResourceLists.html)
