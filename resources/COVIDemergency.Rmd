@@ -53,7 +53,7 @@ R chunks are portions of R code that are included in the R markdown and executed
 The following code chunk loads one of the datasets available in the directory.
 
 ```{r} 
-us<-read_csv("~/NYTcovid/us-states.csv")
+us<-read_csv("NYTcovid/us-states.csv")
 ```
 
 We now take a look at the data, using a different option in the specifying the code-chunk.
