@@ -7,13 +7,13 @@ Below you will find the mateiral for technical training.
 
 ### Data Inquiry Session
 - Week 1: Intro to data inquiry and documenting with Rmd
-  - [PreWork](resources/Prework.html)
+  - [PreWork](resources/PreWork.html)
   - COVIDemergency
 - Week 2: Documenting for oral presentations 
 
 ### Helpful Information
 1. [Data Science Resource List](resources/ResourceLists.html)
-2. [Weekly Report](resources/WeeklyReport.html)
+2. [Weekly Report Guidelines](resources/WeeklyReport.html)
 
 
 
