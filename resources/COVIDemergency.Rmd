@@ -1,0 +1,99 @@
+---
+title: "COVID-19: Data Inquiries for Making Decisions"
+output:
+  tufte::tufte_html: 
+    tufte_features: ["fonts",  "italics"]
+  tufte::tufte_handout: default
+---
+
+```{r setup, include=FALSE,echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(tidyr)
+library(gridExtra)
+library(tufte)
+```
+
+During the course of the DSSG program, we will be analyzing datasets of different provenance and form. We will be using a variety of platforms, methods, algorithms and software to better tackle the needs of each of our partners. At the same time, we are going to work towards developing common standards of analysis and reporting quality. Our goal is to isolate and underscore a set of principles that should underlie any effective data analysis. We will explore software tools that make it easier for us to adhere to such principles. And we will think carefully about how the results of our data explorations need to be comunicated to our partners to achieve maximal inpact.
+
+This week, we are invited to read Chapter 2 of "Visual explanations."^[[Edward Tufte](https://www.edwardtufte.com/tufte/) (1997) *Visual Explanations: Images and Quantities, Evidence and Narrative*, Graphics Press] While the piece focuses somewhat on graphical displays, the stories it presents underscore general principles for reasoning about statistical evidence and therefore serve as a great introduction for our work. In Tufte's words, such principles include  
+ 
+ (1)  documenting the sources and characteristics of the data; 
+ (2)  insistently enforcing appropriate comparisons; 
+ (3) demonstrating mechanisms of cause and effect; 
+ (4) expressing those mechanisms quantitatively; 
+ (5) recognizing the inherently multivariate nature of analytic problems; and
+ (6) inspecting and evaluating alternative explanations.
+
+To  explore these and other principles, we will reserve some time each week to analyze data relative to the COVID-19 pandemic: these common data will allow us to communicate across groups and test out different strategies with the necessary detachment. We will refer to our efforts 
+in this direction as *Data Inquiries*. 
+
+
+# The  medium
+
+The first principle listed above has to do with *documentation*, and documentation is going to be what we start with. 
+No inquiry is of any use if one cannot---at any point in time---recount how the evidence was collected and processed. To help us keep a live narrative of our inquiries, we are going to rely on R Markdown^[See the [R studio  webpage](https://rmarkdown.rstudio.com) and the book [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)]. This document is written using R Markdown and a special package called `tufte`^[See the [example](http://rstudio.github.io/tufte/) and the [R package](https://cran.r-project.org/web/packages/tufte/index.html)]. As you can tell, it emulates the style of Tufte's book and it is particularly appropriate for *handouts*, that is documents that are intended to be used as a base of discussion, rather than final references. 
+
+You are going to use R markdowns to write all of your weekly reports as well as the slides for your presentations. If you are not familiar with R markdown yet, you might need to spend a bit of time to learn how to use this medium, but you will see that having the same tool to comment your code, write your reports and presentations results in a substantial time save and improves the quality of your documentation. We will devote more attention to how to use R markdown to prepare slides for presentations at a later stage. For the time being, let's focus on writing good reports. 
+
+To get familiar with R markdown, open the .Rmd source of this document in Rstudio. Note that it requires a certain number of R packages (as specified at the beginning of the file): you will need to have these installed. Find the button `Knit`, select `knit to tufte_html`: this will create an html document, just like the one you are reading. You can try to modify the .Rmd source and see what happens. To select successfully `knit to tufte_handout` you need to have LaTeX installed: this would create a pdf document. There are a number of short introductions to R Markdown that you might find useful.^[See  [C. Shalizi's introduction](http://www.stat.cmu.edu/~cshalizi/rmarkdown/) or the [Rstudio cheat sheet](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for very short references. The [Data Challenge Lab's R Markdown basics content](https://dcl-2020-01.github.io/curriculum/rmarkdown-basics.html) gives you a longer presentation.] What you are likely to find most useful, however, is to look carefully at the next section of this document, when we start interacting with data.
+
+
+# The data
+
+ "Data! Data! Data! [...] I can't make bricks without clay!", famously screams Sherlock Holmes.^[Arthur Conan Doyle (1892) "The Adventure of the Copper Beeches" in *The Adventures of Sherlock Holmes*] 
+ 
+ So, let's get some data! We are going to start with the collection of COVID-19 cases and deaths counts compiled by the New York Times. This is shared with the public in a GitHub repository^[https://github.com/nytimes/covid-19-data]. You will be using version control a lot during this summer to make sure all the members of your team can actively and orderly participate to the analysis. To clone a GitHub directory like the one mantained by the NYT in Rstudio is very easy. Please watch the short video for directions, clone the repository on your computer, keeping precisely track of its destination. In order to re-run the commands below on your machine, you might need to modify them to make sure that Rstudio is looking for files in the right place.
+ 
+ 
+R chunks are portions of R code that are included in the R markdown and executed every time the .Rmd is knitted. An R chunk starts on a new line with three backquotes  followed by `{r}` and  and ends with three backquotes  on a new line. We can choose to make the commands visible, or to view only the results, including warnings and echos, depending on the options we specify in the chunk options after `r` and in between the curly brackets.
+
+The following code chunk loads one of the datasets available in the directory.
+
+```{r} 
+us<-read_csv("~/NYTcovid/us-states.csv")
+```
+
+We now take a look at the data, using a different option in the specifying the code-chunk.
+
+```{r,echo=FALSE} 
+summary(us)
+```
+
+Finally we  graphically display  part of the data. Note that the chunk options here include details on the size of the figure. While you can avoid specifying these, often, in order to obtain effective displays you will need to customize these values.
+
+```{r,echo=FALSE,message = FALSE,warning=FALSE,fig.height=6,fig.width=8,fig.fullwidth = TRUE}
+p<-ggplot(us)+geom_line(aes(x=date,y=(cases)),se=FALSE,stat = "smooth") + labs(x="Date",y="Cases", title="Total COVID-19 confirmed cases over the course of the epidemic") + theme_bw() +theme(axis.text.x = element_text(angle = 90)) +facet_wrap(vars(state))
+p
+
+```
+ 
+
+This is a large graph, for which we decided to use the entire width of the html file. Often, we might be  interested in smaller figures. With the `tufte` package we have the option to  display them on the side of the text, by appropriately modifying the chunk options.
+
+```{r,echo=FALSE,message = FALSE,include=FALSE}
+ny<-filter(us,state=="New York")
+mydiff<-function(x){return(c(x[1],diff(x)))}
+ny<-mutate(ny,new_cases=mydiff(cases),new_deaths=mydiff(deaths))
+```
+```{r,echo=FALSE,message = FALSE,warning=FALSE,fig.height=3,fig.width=4,fig.margin = TRUE,fig.cap = "This side graph focuses on the state of New York"}
+p<-ggplot(ny)+ theme_bw()
+p<-p+geom_line(aes(x=date,y=(new_cases)),stat="smooth",alpha=0.7)+geom_point(aes(x=date,y=(new_cases))) + labs(x="Date",y="New Cases", title="Daily new cases in New York") 
+p
+```
+
+ 
+The display on the side focuses on the state of New York, and looks at daily new cases, rather than cumulative counts. This requires us to work on the data a bit before producing a display. In the code for both graphics, there are a number of options, specifying labels, themes etc. They are an invitation for you to explore.
+ 
+ 
+# The first task
+ 
+ Your first task is to write a couple of paragraphs to add to this R Markdown file to describe the substance of the data that you have downloaded. You should rely on the information contained in the `README.md` file and on your own exploration of the dataset. Note that there are three datasets, please describe the variables in each of them and the procedures with which they are collected to the best of your understanding. Make sure you document what you learn through your exploration.
+ 
+# The second task
+ 
+The stories in the chapter by Tufte that you read describe how one presentation of evidence resulted in the resolution of a public health crisis and another failed to avoid a crisis in the space program. Data as the one in this directory is used by federal, state, and local governament agencies to monitor the epidemic and avoid crises.
+What graphical display would you use with this goal in mind? Note that we will revisit this question more precisely during the summer: this is our very first pass and our goal  is to have a starting point we might improve upon.
+ 
