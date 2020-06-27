@@ -1,0 +1,72 @@
+<h2 id="git-intro">Git Intro</h2>
+<h3 id="why-version-control-what-is-git-">Why version control? What is git?</h3>
+<p>Git is a version control software. It was designed to help people track changes and collaborate on large software projects.</p>
+<h3 id="why-github-">Why GitHub?</h3>
+<p>GitHub is a platform built around git. It includes user interfaces that make collaboration and project management easier. 
+(Note: do not push the data that is on Nero. It is fine (and we encourage you!) to push your code!)</p>
+<h3 id="quick-intro-to-git">Quick Intro to Git</h3>
+<h4 id="cloning-and-forking">Cloning and forking</h4>
+<p><strong>Clone</strong>:
+Make a copy of the repository in your local directory so you can edit this.
+<code>git clone &lt;path_to_repository&gt;</code>
+Note - use the &#39;https&#39; link to clone! </p>
+<p><strong>Fork</strong>:
+Use the User Interface on GitHub to Fork. This creates a copy of the repository in <em>your</em> account first, and then you have to clone it to your local directory.</p>
+<p>Forking vs cloning: </p>
+<ul>
+<li>both are variations of the same thing - getting a copy of the repository</li>
+<li>forking is generally used when you are taking someone else&#39;s project and making changes to it because it creates a copy on your account</li>
+<li>cloning is more often used for collaborating on a shared project, or copying your own remote to a local directory</li>
+</ul>
+<p><strong>Where is the origin?</strong></p>
+<ul>
+<li>The <em>origin</em> is the repository on GitHub that you have cloned from</li>
+<li>This is useful for updating / sharing your code</li>
+<li>If you fork, the origin is the copy you created in <em>your</em> account. If you clone, it is the original copy.</li>
+</ul>
+<h4 id="branches">Branches</h4>
+<p>Check what branch you are on (it will be starred):
+<code>git branch</code></p>
+<p>Creating a new branch and switch to it:
+<code>git checkout -b &lt;my_branch&gt;</code></p>
+<p>Switch branches:
+<code>git checkout &lt;my_branch&gt;</code></p>
+<p>The <em>master</em> branch is the default branch that is created when you clone. It is generally better to create another branch, edit/commit/push on this branch and then put in a <strong>Merge Request</strong> to have these merged into the master. You can do this on the user interface on GitHub.</p>
+<h4 id="add-remove-rename-files-for-version-control">Add/Remove/Rename files for Version Control</h4>
+<p>If you want to start version-controlling existing files, you can accomplish that with <em>git add</em> command that specify the files you want to track:
+<code>git add README.md</code> or <code>git add *.py</code> for example</p>
+<p>Similarly, to remove a file from your tracked files on Git, you can do
+<code>git rm README.md</code>
+If you want to keep the file on your local hard drive but not have Git track it anymore, simply do
+<code>git rm --cached README.md</code></p>
+<p>If you want to rename a file in Git, you can run:
+<code>git mv file_from file_to</code></p>
+<h4 id="committing-pushing-and-pulling">Committing, Pushing, and Pulling</h4>
+<p>Committing saves a change in your local copy of the repository. Pushing takes that change and pushes it to another remote location. In this case, we are pushing it to the origin, which is on GitHub. </p>
+<p>Committing:
+<code>git commit -m &#39;your comment here describing changes made&#39;</code></p>
+<p>Before you push, you want to make sure your branch is up-to-date with the changes on GitHub. To do this you <em>fetch</em> the data from GitHub and then <em>merge</em> it to your local repository. You can do this by excecuting a fetch, and then merge, or a <em>pull</em>.</p>
+<p>Pulling:
+ <code>git pull &lt;from&gt; &lt;to&gt;</code> excecutes <code>git fetch</code> (to grab the changes from the updated location) and <code>git merge</code> to merge these changes with your data</p>
+<p>Pushing:
+<code>git push &lt;from&gt; &lt;to&gt;</code>
+A common version of this is <code>git push origin &lt;branch_name&gt;</code>. (This will push the code from your local repository&#39;s &#39;<branch_name>&#39; branch to that branch of the &#39;origin&#39; on GitHub.)</p>
+<p>The first time you do this, you will have to set your global git config
+These commands are: <code>git config --global user.name &lt;your_name&gt;</code> and <code>git config --global user.email &lt;your_email&gt;</code></p>
+<p>When you pull, if two people have edited the same file, you will get an error message about a merge conflict. This is not a problem! </p>
+<h4 id="dealing-with-merge-conflicts-">Dealing with Merge conflicts:</h4>
+<p>  1) Edit the file with the error. The merge conflicts are surrounded by </p>
+<pre><code><span class="xml">  <span class="hljs-tag">&lt;&lt;&lt; <span class="hljs-attr">HEAD</span>
+
+  <span class="hljs-attr">edit1</span>
+
+  ==== 
+
+  <span class="hljs-string">edit2</span> &gt;</span>&gt;&gt;</span>
+</code></pre><p>  Select one of the two regions and delete the added characters.
+  2) Save and commit this edit.
+  3) Now push!</p>
+<h4 id="check-status-and-commit-history">Check Status and Commit History</h4>
+<p>You can easily check the status of your files by running <code>git status</code>. To see a list of commit history, use <code>git log</code>.</p>
+<h3 id="additional-helpful-reference-">Additional Helpful Reference:</h3>
+<p>You may find Chapter 2 of the <a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository">documentation</a> here quite useful. </p>
