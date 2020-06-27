@@ -3,7 +3,7 @@
 Below you will find a list of mateiral for the educational program. The project repositories can be found in [Code for Africa](https://github.com/StanfordDataScience/dssg-cfa), [Reglab](https://github.com/StanfordDataScience/dssg-reglab), [Brazil](https://github.com/StanfordDataScience/dssg-brazil).
 
 ### Technical Traning Resources
-1. [Github setup](resources/git_setup.html)
+1. [Git Intro and Setup](resources/git_setup.html)
 
 ### Data Inquiry Session
 - Week 1: Intro to data inquiry and documenting with Rmd
