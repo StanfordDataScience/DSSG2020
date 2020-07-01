@@ -15,6 +15,7 @@ Below you will find a list of material for the educational program. The project 
 ### Workshops
 - Week 2: Anti-racism, anti-discrimination and ethical tech
     - [PreWork](resources/workshop_antiracism.md) **(Due by Tuesday, July 7th at 9am)**
+    - [The Italian COVID-19 epidemic](resources/ItalyCovid.pdf)
 
 ### Helpful Information
 1. [Data Science Resource List](resources/ResourceLists.html)
