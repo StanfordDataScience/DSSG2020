@@ -1,0 +1,111 @@
+---
+title: "The Italian COVID-19 epidemic"
+author: "DSSG Data Inquiry 2"
+output: 
+  beamer_presentation:
+    theme: "default"  
+    colortheme: "beaver"
+header-includes:
+  \usepackage{caption}
+  \captionsetup[figure]{labelformat=empty}
+---
+
+```{r setup, include=FALSE,echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(tidyr)
+library(gridExtra)
+library(tufte)
+```
+
+
+
+# The epidemic in Italy
+ 
+ - First case on 31 January 2020, two chinese tourists
+ 
+ - A cluster of approximately 15 confirmed cases detected in Lombardy on 21 February, with no established connection to China.
+ 
+ - Italy is the first "western" nation to experience a severe COVID-19 epidemic
+ 
+ - As of June 22, there have been  238,720 confirmed cases and 34,657 deaths 
+ 
+# Data on the Italian epidemic
+
+- The state of emergency is declared for 6 months on January 31 because of the danger presented by COVID-19.
+
+- The *Dipartimento della protezione civile* (non military security) is charged with coordinating  the response and releases every day at 18:30 data on current counts of cases and deaths. 
+
+- A GitHub site hosts the data: https://github.com/pcm-dpc/COVID-19
+ 
+# Timeline 
+
+\begin{itemize}
+\item[Feb. 22]  Quarantine of more than 50,000 people from 11 municipalities in Northern Italy; schools in the regions where these municipalites are located (Lombardy and Veneto) are closed + 
+
+
+\item[March 8] Quarantine expands to  all of Lombardy and  the following day to all of Italy, placing more than 60 million people in quarantine. On 11 March 2020,  nearly all commercial activity are closed except for supermarkets and pharmacies. On 21 March,  all non-essential businesses and industries are closed and  movement of people is restricted.
+
+\item[May 4] Traveling restrictions are partially eased, and  manufacturing industries and construction sites reopen
+
+\item[May 18] Most businesses reopen and citizens are allowed to travel within their regions
+\end{itemize}
+ 
+# Geographical orientation
+![](italy.png)
+ 
+# The regions and provinces of Italy
+
+![](Italian_regions_provinces.pdf)
+
+# Regions and provinces of Italy
+
+- There are 20 regions, all divided in provinces. The region called "Trentino Alto Adige/Sudtirol" is divided in two "autonomous provinces": Trento and Bolzano.
+
+- Populations of regions varies from  approx. 125,000 (Aosta) to approx. 10,000,000 (Lombardia).
+
+- There are 107 Provinces: see [Wikipedia page](https://en.wikipedia.org/wiki/Provinces_of_Italy)
+
+# 
+
+```{r,include=FALSE,echo=FALSE}
+regions <- read_csv("dpc-covid19-ita-regioni.csv", 
+    col_types = cols(casi_testati = col_double(), 
+        terapia_intensiva = col_character(), 
+        totale_ospedalizzati = col_character(),data = col_datetime(format = "")))
+regions<-rename(regions,Date=data,State=stato,RegionCODE=codice_regione,Region=denominazione_regione,Patients=ricoverati_con_sintomi,ICU=terapia_intensiva,Hospitalized=totale_ospedalizzati,Selfisolating=isolamento_domiciliare,ActualCases=totale_positivi,ChangeCases=variazione_totale_positivi,NewCases=nuovi_positivi,Recovered=dimessi_guariti,Deaths=deceduti,TotCases=totale_casi,Tests=tamponi,TestedSamples=casi_testati)
+
+```
+
+```{r,fig.width=8,fig.height=6.5,echo=FALSE,message = FALSE}
+p<-ggplot(regions) +geom_point(aes(x=Date,y=(Deaths),col=Region))+ labs(x="Date",y="Cases", title="Cumulative count of deaths in the course of the epidemic") + theme_bw() +
+theme(legend.position="bottom", legend.box = "horizontal") 
+p
+```
+
+#
+
+```{r,fig.width=8,fig.height=6.5,echo=FALSE,message = FALSE}
+p<-ggplot(regions)+geom_line(aes(x=Date,y=(Patients),col=Region),se=FALSE,stat = "smooth",alpha=0.7) +geom_point(aes(x=Date,y=(Patients),col=Region))+ labs(x="Date",y="Cases", title="Daily count of hospitalized patients the course of the epidemic") + theme_bw() +
+theme(legend.position="bottom", legend.box = "horizontal") 
+p
+```
+
+#
+
+```{r,fig.width=8,fig.height=6.5,echo=FALSE,message = FALSE}
+p<-ggplot(regions)+geom_line(aes(x=Date,y=(ActualCases),col=Region),se=FALSE,stat = "smooth",alpha=0.7) +geom_point(aes(x=Date,y=(ActualCases),col=Region))+ labs(x="Date",y="Cases", title="Daily count of active cases the course of the epidemic") + theme_bw() +
+theme(legend.position="bottom", legend.box = "horizontal") 
+p
+```
+
+# 
+
+
+```{r,fig.width=8,fig.height=6.5,echo=FALSE,message = FALSE}
+p<-ggplot(regions)+geom_line(aes(x=Date,y=(NewCases),col=Region),se=FALSE,stat = "smooth",alpha=0.7) +geom_point(aes(x=Date,y=(NewCases),col=Region))+ labs(x="Date",y="Cases", title="Daily count of new cases the course of the epidemic") + theme_bw() +
+theme(legend.position="bottom", legend.box = "horizontal") 
+p
+```
