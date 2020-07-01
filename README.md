@@ -7,13 +7,12 @@ Below you will find a list of material for the educational program. The project 
 
 ### Data Inquiry Sessions
 - Week 1: Intro to data inquiry and documenting with Rmd
-    - [PreWork](resources/Prework.html) (Due by Wednesday July 1st at 9am)
+    - [PreWork](resources/Prework.html) (Due by Wednesday, July 1st at 9am)
     - [COVID emergency](resources/COVIDemergency.html)
 
 ### Workshops
 - Week 2: Anti-racism, anti-discrimination and ethical tech
-    - [PreWork](resources/workshop_antiracism.md)
-
+    - [PreWork](resources/workshop_antiracism.md) **(Due by Tuesday, July 7th at 9am)**
 
 ### Helpful Information
 1. [Data Science Resource List](resources/ResourceLists.html)
