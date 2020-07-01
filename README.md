@@ -10,7 +10,7 @@ Below you will find a list of material for the educational program. The project 
     - [PreWork](resources/Prework.html) (Due by Wednesday, July 1st at 9am)
     - [COVID emergency](resources/COVIDemergency.html)
 - Week 2: Oral presentations, slides in Rmd, and understanding variables
-    - [Prework](resources/PreWork2.html) **(Due by Wednesday, July 8 at 9am)**
+    - [PreWork](resources/PreWork2.html) **(Due by Wednesday, July 8 at 9am)**
 
 ### Workshops
 - Week 2: Anti-racism, anti-discrimination and ethical tech
