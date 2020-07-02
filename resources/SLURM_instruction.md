@@ -12,7 +12,7 @@ SLRUM is a job-scheduling manager for Unix clusters. It allows easy request for 
 ### Sample submit.sbatch script (for Python) ###
 You can create the following job submission script on Nero using a text editor such as `vi` by simply typing `vi submit.sbatch` for example. Type `i` to start inserting/editting and `esc :wq` to save and exit the text editor.
 
-Most of the specifications should hopefully be self-explanatory. You should, of course, adjust the setting as deemed appropriate for the script you will be running. Here is a exhaustive [documentation](https://slurm.schedmd.com/sbatch.html) for reference and here is a shorter [cheat-sheet](https://slurm.schedmd.com/pdfs/summary.pdf) for the essentials.
+Most of the specifications should hopefully be self-explanatory. You should, of course, adjust the setting as deemed appropriate for the script you will be running. Here is an exhaustive [documentation](https://slurm.schedmd.com/sbatch.html) for reference and here is a shorter [cheat-sheet](https://slurm.schedmd.com/pdfs/summary.pdf) for the essentials.
 
 ```
 #!/bin/bash
