@@ -1,6 +1,6 @@
 ### What is SLRUM? ###
 SLRUM is a job-scheduling manager for Unix clusters. It allows easy request for resources and job submission on computing platform such as Nero. A SLURM batch script consists of two parts: resource requests and job steps.
-- Resource requests describe the amount of computing resource (CPUs, GPUs, memory, expected run time, etc.) that the job will need to run.
+- Resource requests describe the amount of computing resource (CPUs, GPUs, memory, expected run time, etc.) that the job will need to run. These are commands prefixed with `#SBATCH`, and are interpreted by SLURM as parameters describing resource requests and submissions options.
 - Job steps describe tasks/scripts that must be executed.
 
 ### Useful commands for monitoring jobs ###
@@ -10,7 +10,7 @@ SLRUM is a job-scheduling manager for Unix clusters. It allows easy request for 
 - `sbatch <submit_file_name>.sbatch`: submit a job script named <submit_file_name>.sbatch
 
 ### Sample submit.sbatch script (for Python) ###
-You can create the following job submission script on Nero using a text editor such as `vi` by simply typing `vi submit.sbatch` for example.
+You can create the following job submission script on Nero using a text editor such as `vi` by simply typing `vi submit.sbatch` for example. Type `i` to start inserting/editting and `esc :wq` to save and exit the text editor.
 
 ```
 #!/bin/bash
@@ -24,13 +24,10 @@ You can create the following job submission script on Nero using a text editor s
 #SBATCH --time 00:30:00   # format: d-hh:mm:ss
 #SBATCH --output=test.log
 #SBATCH --error=test.err
-#SBATCH --mail-type=END,FAIL  # get email notification when job done & fail (optional)
-#SBATCH --mail-user=<sunetid>@stanford.edu
 
 module load anaconda/3
 
 python my_script.py
-
 ```
 *Note:* `module avail` shows the modules available for loading on the cluster and `module load <name_of_module>` loads the corresponding module.
 
