@@ -1,0 +1,37 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h3 id="what-is-slurm-">What is SLURM?</h3>
+<p>SLRUM is a job-scheduling manager for Unix clusters. It allows easy request for resources and job submission on computing platform such as Nero. A SLURM batch script consists of two parts: resource requests and job steps.</p>
+<ul>
+<li>Resource requests describe the amount of computing resource (CPUs, GPUs, memory, expected run time, etc.) that the job will need to run. These are commands prefixed with <code>#SBATCH</code>, and are interpreted by SLURM as parameters describing resource requests and submissions options.</li>
+<li>Job steps describe tasks/scripts that needs to be executed.</li>
+</ul>
+<h3 id="useful-commands-for-monitoring-jobs">Useful commands for monitoring jobs</h3>
+<ul>
+<li><code>sinfo</code>: reports the partitions and nodes available</li>
+<li><code>squeue -u &lt;SUNetID&gt;</code>: reports the state of all submitted jobs under the UserID</li>
+<li><code>scancel &lt;jobID&gt;</code> or <code>scancel -u &lt;SUNetID&gt;</code>: cancel a pending or running job (the latter aborts all jobs under the UserID)</li>
+<li><code>sbatch &lt;submit_file_name&gt;.sbatch</code>: submit a job script named <submit_file_name>.sbatch</li>
+</ul>
+<h3 id="sample-submit-sbatch-script-for-python-">Sample submit.sbatch script (for Python)</h3>
+<p>You can create the following job submission script on Nero using a text editor such as <code>vi</code> by simply typing <code>vi submit.sbatch</code> for example. Type <code>i</code> to start inserting/editting and <code>esc :wq</code> to save and exit the text editor.</p>
+<p>Most of the specifications should hopefully be self-explanatory. You should, of course, adjust the setting as deemed appropriate for the script you will be running. Here is an exhaustive <a href="https://slurm.schedmd.com/sbatch.html">documentation</a> for reference and here is a shorter <a href="https://slurm.schedmd.com/pdfs/summary.pdf">cheat-sheet</a> for the essentials.</p>
+<pre><code><span class="hljs-meta">#!/bin/bash</span>
+
+<span class="hljs-meta">#SBATCH --job-name=test</span>
+<span class="hljs-meta">#SBATCH --partition=normal</span>
+<span class="hljs-meta">#SBATCH --nodes=2    </span>
+<span class="hljs-meta">#SBATCH --cpus-per-task=1</span>
+<span class="hljs-meta">#SBATCH --ntasks-per-node=2</span>
+<span class="hljs-meta">#SBATCH --mem-per-cpu=2G</span>
+<span class="hljs-meta">#SBATCH --time 00:30:00   # format: d-hh:mm:ss</span>
+<span class="hljs-meta">#SBATCH --output=test.log</span>
+<span class="hljs-meta">#SBATCH --error=test.err</span>
+
+module load anaconda/<span class="hljs-number">3</span>
+
+python my_script.py
+</code></pre><p><em>Note:</em> <code>module avail</code> shows the modules available for loading on the cluster and <code>module load &lt;name_of_module&gt;</code> loads the corresponding module.</p>
+<p>After submitting the script to the job queue using <code>sbatch submit.sbatch</code>, you can easily manage its status with the commands from the previous section. After it finishes running the <code>my_script.py</code> file, it will output a log file <code>test.log</code> and a file <code>test.err</code> that catches any error message (if any) during the execution. You can check out the files using <code>cat test.err</code>, for example.</p>
+</body></html>
