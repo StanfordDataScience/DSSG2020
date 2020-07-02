@@ -1,7 +1,7 @@
 ### What is SLRUM? ###
 SLRUM is a job-scheduling manager for Unix clusters. It allows easy request for resources and job submission on computing platform such as Nero. A SLURM batch script consists of two parts: resource requests and job steps.
 - Resource requests describe the amount of computing resource (CPUs, GPUs, memory, expected run time, etc.) that the job will need to run. These are commands prefixed with `#SBATCH`, and are interpreted by SLURM as parameters describing resource requests and submissions options.
-- Job steps describe tasks/scripts that must be executed.
+- Job steps describe tasks/scripts that needs to be executed.
 
 ### Useful commands for monitoring jobs ###
 - `sinfo`: reports the partitions and nodes available
@@ -31,4 +31,4 @@ python my_script.py
 ```
 *Note:* `module avail` shows the modules available for loading on the cluster and `module load <name_of_module>` loads the corresponding module.
 
-After submitting the script using `sbatch submit.sbatch`, you can easily monitor its status with the commands from the previous section. After it finishes running the `my_script.py` file, it will output a log file `test.log` and a file `test.err` that catches any error message (if any) during the execution. You can check out the files using `cat test.err`, for example.
+After submitting the script to the job queue using `sbatch submit.sbatch`, you can easily monitor its status with the commands from the previous section. After it finishes running the `my_script.py` file, it will output a log file `test.log` and a file `test.err` that catches any error message (if any) during the execution. You can check out the files using `cat test.err`, for example.
