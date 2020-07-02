@@ -21,9 +21,11 @@ You can create the following job submission script on Nero using a text editor s
 #SBATCH --cpus-per-task=1
 #SBATCH --ntasks-per-node=2
 #SBATCH --mem-per-cpu=2G
-#SBATCH --time 00:30:00
+#SBATCH --time 00:30:00   # format: d-hh:mm:ss
 #SBATCH --output=test.log
 #SBATCH --error=test.err
+#SBATCH --mail-type=END,FAIL  # get email notification when job done & fail (optional)
+#SBATCH --mail-user=<sunetid>@stanford.edu
 
 module load anaconda/3
 
