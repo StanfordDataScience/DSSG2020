@@ -15,7 +15,7 @@ Below you will find a list of material for the educational program. The project 
     - [The Italian COVID-19 epidemic](resources/ItalyCovid.pdf)
 - Week 3: Enforcing comparisons and graphics
     - [PreWork](resources/PreWork3.html) **(Due by Wednesday, July 15 at 9am)**
-    - [Epidemic Comparison](resources/EpidemicComparison.html)
+    - [Epidemic Comparisons](resources/EpidemicComparisons.html)
 
 ### Workshops
 - Week 2: Anti-racism, anti-discrimination and ethical tech
