@@ -23,6 +23,7 @@ Below you will find a list of material for the educational program. The project 
 
 ### Helpful Information
 1. [Program Norms Working Document](https://www.dropbox.com/scl/fi/vtkqxmseia4fd3z9bmeg8/_Norms.gdoc?dl=0&rlkey=quvmy3w3t9ipnf6qqxutk5l1h)
-2. [Data Science Resource List](resources/ResourceLists.html)
-3. [Weekly Report Guidelines](resources/WeeklyReport.html)
+2. [Weekly Report Guidelines](resources/WeeklyReport.html)
+3. [Presentation Guidelines](resources/DSSGpresentation.html)
 4. [Weekly Feedback Form](https://forms.gle/LXmcuxDxRuQQRyzS7)
+5. [Data Science Resource List](resources/ResourceLists.html)
