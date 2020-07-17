@@ -17,7 +17,7 @@ Below you will find a list of material for the educational program. The project 
     - [PreWork](resources/PreWork3.html) (Due by Wednesday, July 15 at 9am)
     - [Epidemic Comparisons](resources/EpidemicComparisons.html)
 - Week 4: Narrative
-    - [Pre-Reading](resources/story-basics-assignment.pdf) and [Pre-Survey](https://docs.google.com/forms/d/e/1FAIpQLSc1kpa2Luq50R4vUh8vvJ_hzUk-pllT7X-0CdelnAbQcGSKmA/viewform) **(Due by Wednesday, July 22 at 9am)**
+    - [Pre-Survey](https://docs.google.com/forms/d/e/1FAIpQLSc1kpa2Luq50R4vUh8vvJ_hzUk-pllT7X-0CdelnAbQcGSKmA/viewform) and [Pre-Reading](resources/story-basics-assignment.pdf) — do the survey first! **(Due by Wednesday, July 22 at 9am)**
 
 ### Workshops
 - Week 2: Anti-racism, anti-discrimination and ethical tech
