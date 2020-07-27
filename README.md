@@ -1,3 +1,5 @@
+This repository creates the website [stanforddatascience.github.io/DSSG2020/](stanforddatascience.github.io/DSSG2020/), which provides a superior browsing experience (e.g., html renders appropriately etc.)
+
 ## Welcome to the Stanford DSSG summer 2020 program!
 
 Below you will find a list of material for the educational program. The project repositories can be found in [Code for Africa](https://github.com/StanfordDataScience/dssg-cfa), [Reglab](https://github.com/StanfordDataScience/dssg-reglab), [Brazil](https://github.com/StanfordDataScience/dssg-brazil).
