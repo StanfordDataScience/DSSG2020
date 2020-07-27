@@ -1,4 +1,4 @@
-This repository creates the website [stanforddatascience.github.io/DSSG2020/](stanforddatascience.github.io/DSSG2020/), which provides a superior browsing experience (e.g., html renders appropriately etc.).
+This repository creates the website [https://stanforddatascience.github.io/DSSG2020/](stanforddatascience.github.io/DSSG2020/), which provides a superior browsing experience (e.g., html renders appropriately etc.).
 
 ## Welcome to the Stanford DSSG summer 2020 program!
 
