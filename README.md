@@ -23,6 +23,8 @@ Below you will find a list of material for the educational program. The project 
 - Week 5: Elaborate theories
     - [PreWork](resources/PreWork5.html) **(Due by Wednesday, July 29 at 9am)**
     - [Explaining the Pandemic](resources/ExplainingThePandemic.html)
+- Week 7: Punchline figures
+    - Each team to bring one figure with a key takeaway for final presentation **(Due by Wednesday, August 12 at 9am)**
 
 ### Workshops
 - Week 2: Anti-racism, anti-discrimination and ethical tech

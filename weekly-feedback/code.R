@@ -2,6 +2,7 @@ library(tidyverse)
 library(googlesheets4)
 options(gargle_oauth_email = "benastenhaug@gmail.com")
 library(lubridate)
+source("weekly-feedback/helpers.R")
 
 theme_set(cowplot::theme_minimal_hgrid())
 
@@ -10,8 +11,8 @@ sheet <- gs4_get("1wDsgKkhisM-wW9mX-imuFBQoQEnbhomBuNaN41EgJzA")
 data <- 
     sheet %>% 
     read_sheet() %>% 
-    select(time = 1, learning = 2, project = 3, enjoying = 4) %>% 
-    mutate(time = timestamps_to_weeks(time))
+    select(time2 = 1, learning = 2, project = 3, enjoying = 4) %>% 
+    mutate(time = timestamps_to_weeks(time2))
 
 data2 <- 
     data %>% 
@@ -32,5 +33,5 @@ data2 %>%
     geom_line(alpha = 0.25, linetype = "dashed") +
     facet_wrap(~ var, ncol = 1) +
     scale_y_continuous(limits = c(0, 5)) +
-    scale_x_continuous(breaks = 1:2) +
+    scale_x_continuous(breaks = 1:6) +
     labs(x = "Week", y = "Median score", title = "DSSG Quantitative Feedback")
